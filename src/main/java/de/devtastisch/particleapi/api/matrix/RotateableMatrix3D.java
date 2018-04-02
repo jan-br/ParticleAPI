@@ -44,7 +44,7 @@ public class RotateableMatrix3D implements Matrix3D {
      */
     public RotateableMatrix3D(int height, int width, int depth, double x, double y, double z) {
         this(0, 0, 0, height, width, depth, new Vector(x, y, z), 1, new Vector(0, 0, 0), null, 5);
-        this.schedule((matrix3D) -> {
+        this.schedule(() -> {
             if (this.getFollowing() != null && this.getFollowing().isValid()) {
                 if (this.getFollowing().getLocation().distanceSquared(this.getMatrixLocationAsBukkit(this.getFollowing().getWorld(), new MatrixLocation(0, 0, 0))) > 16) {
                     this.setVelocity(this.getFollowing().getLocation().add(0, 2, 0).toVector().subtract(this.getLocation()));
