@@ -6,6 +6,7 @@ import de.devtastisch.particleapi.api.particle.ParticleEffect;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import de.devtastisch.particleapi.api.matrix.Matrix3D;
+import org.bukkit.Bukkit;
 import org.bukkit.World;
 
 /**
@@ -26,7 +27,7 @@ public class DrawLine implements MatrixAction {
         double zdif = location2.getZ() - location1.getZ();
 
         for (double i = 0; i <= 1 ; i+=0.02) {
-            matrix3D.paint(world, new MatrixLocation((xdif * i) + (xdif < 0 ? -1 : 1) * Math.min(location1.getX(), location2.getX()), (ydif * i) + (ydif < 0 ? -1 : 1) * Math.min(location1.getY(), location2.getY()), (zdif * i) + (zdif < 0 ? -1 : 1) * Math.min(location1.getZ(), location2.getZ())), particleEffect);
+            matrix3D.paint(world, new MatrixLocation((xdif * i) + (xdif <= 0 ? -1 : 1) * Math.min(location1.getX(), location2.getX()), (ydif * i) + (ydif <= 0 ? -1 : 1) * Math.min(location1.getY(), location2.getY()), (zdif * i) + (zdif <= 0 ? -1 : 1) * Math.min(location1.getZ(), location2.getZ())), particleEffect);
         }
 
     }

@@ -23,6 +23,10 @@ public class MatrixLocation {
         return this;
     }
 
+    public String toString(){
+        return x + ";" + y + ";" + z;
+    }
+
     public MatrixLocation clone(){
         return new MatrixLocation(this.x, this.y, this.z);
     }

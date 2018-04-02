@@ -3,3 +3,6 @@ version: ${project.version}
 author: DevTastisch
 main: de.devtastisch.particleapi.ParticleAPI
 load: STARTUP
+
+commands:
+  test:

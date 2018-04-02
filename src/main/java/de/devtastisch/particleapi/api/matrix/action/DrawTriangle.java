@@ -15,10 +15,10 @@ import org.bukkit.World;
 @AllArgsConstructor
 public class DrawTriangle implements MatrixAction {
 
+    private ParticleEffect particleEffect;
     private MatrixLocation location1;
     private MatrixLocation location2;
     private MatrixLocation location3;
-    private ParticleEffect particleEffect;
 
     @Override
     public void execute(World world, Matrix3D matrix3D) {

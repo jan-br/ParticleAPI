@@ -69,11 +69,11 @@ public interface Matrix3D {
 
     /**
      * Schedules a task
-     * @param consumer task to execute
+     * @param runnable task to execute
      * @param delay the delay to wait after every scheduled tick
      * @return generated {@link Scheduler} object
      */
-    Scheduler schedule(Consumer<Matrix3D> consumer, int delay);
+    Scheduler schedule(Runnable runnable, int delay);
 
     /**
      * Velocity to set to the whole matrix.

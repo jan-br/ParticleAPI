@@ -15,15 +15,15 @@ import org.bukkit.World;
 @Data
 public class DrawCycle implements MatrixAction {
 
-    private MatrixLocation matrixLocation;
     private ParticleEffect particleEffect;
+    private MatrixLocation matrixLocation;
     private double radius = 1;
     private double resolutionDegrees = 1;
 
     @Override
     public void execute(World world, Matrix3D matrix3D) {
         for(double i = 0; i <= 360; i+=resolutionDegrees){
-            matrix3D.paint(world, matrixLocation.clone().add(new MatrixLocation(Math.sin(Math.toRadians(i)), Math.cos(Math.toRadians(i)), 0)), getParticleEffect());
+            matrix3D.paint(world, matrixLocation.clone().add(new MatrixLocation(this.radius * Math.sin(Math.toRadians(i)), this.radius * Math.cos(Math.toRadians(i)), 0)), getParticleEffect());
         }
     }
 

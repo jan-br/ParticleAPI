@@ -63,7 +63,7 @@ public class RotateableMatrix3D implements Matrix3D {
         if (!isInside(matrixLocation)) {
             return;
         }
-        particleEffect.spawn(getMatrixLocationAsBukkit(world, matrixLocation));
+        particleEffect.spawn(getMatrixLocationAsBukkit(world, matrixLocation), true);
 
     }
 
@@ -112,11 +112,11 @@ public class RotateableMatrix3D implements Matrix3D {
         }
     }
 
-    public Scheduler schedule(Consumer<Matrix3D> consumer, int delay) {
+    public Scheduler schedule(Runnable runnable, int delay) {
         return new Scheduler(delay) {
             @Override
             public void run() {
-                consumer.accept(RotateableMatrix3D.this);
+                runnable.run();
             }
         };
     }
