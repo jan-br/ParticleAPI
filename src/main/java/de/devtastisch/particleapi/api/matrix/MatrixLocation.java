@@ -23,11 +23,26 @@ public class MatrixLocation {
         return this;
     }
 
-    public String toString(){
+    public MatrixLocation sub(MatrixLocation matrixLocation) {
+        this.x -= matrixLocation.getX();
+        this.y -= matrixLocation.getY();
+        this.z -= matrixLocation.getZ();
+        return this;
+    }
+
+    public MatrixLocation multiply(double scale) {
+        this.x *= scale;
+        this.y *= scale;
+        this.z *= scale;
+        return this;
+    }
+
+
+    public String toString() {
         return x + ";" + y + ";" + z;
     }
 
-    public MatrixLocation clone(){
+    public MatrixLocation clone() {
         return new MatrixLocation(this.x, this.y, this.z);
     }
 

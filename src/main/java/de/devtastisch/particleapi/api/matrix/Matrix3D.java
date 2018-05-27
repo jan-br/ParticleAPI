@@ -7,6 +7,7 @@ import org.bukkit.World;
 import org.bukkit.entity.Entity;
 import org.bukkit.util.Vector;
 
+import java.awt.*;
 import java.util.function.Consumer;
 
 public interface Matrix3D {
@@ -41,11 +42,40 @@ public interface Matrix3D {
     void paint(World world, MatrixLocation matrixLocation, ParticleEffect particleEffect);
 
     /**
+     * Draws particles in a relative coordinate system.
+     *
+     * @param world World where particles should be visible
+     * @param matrixLocation Relative location in the matrix
+     * @param particleEffect Type of particle to spawn
+     * @param color Particle color
+     */
+    void paint(World world, Color color, MatrixLocation matrixLocation, ParticleEffect particleEffect);
+
+
+
+
+    /**
+     * Draws particles in a relative coordinate system.
+     *
+     * @param world World where particles should be visible
+     * @param matrixLocation Relative location in the matrix
+     * @param vector Vector where the particle should go
+     * @param particleEffect Type of particle to spawn
+     */
+    void paintVectored(World world, MatrixLocation matrixLocation, Vector vector, ParticleEffect particleEffect);
+
+    /**
      * @param world constructor param for {@link Location}
      * @param matrixLocation relative location in the matrix
      * @return absolute location in dependence on the matrix location and the given relative location
      */
     Location getMatrixLocationAsBukkit(World world, MatrixLocation matrixLocation);
+
+    /**
+     * @param matrixLocation relative location in the matrix
+     * @return vector in dependence on the matrix location and the given relative location
+     */
+    Vector getMatrixLocationAsVector(MatrixLocation matrixLocation);
 
     /**
      * @param matrixLocation relative location to check
@@ -74,6 +104,14 @@ public interface Matrix3D {
      * @return generated {@link Scheduler} object
      */
     Scheduler schedule(Runnable runnable, int delay);
+
+    /**
+     * Schedules a task
+     * @param consumer task to execute
+     * @param delay the delay to wait after every scheduled tick
+     * @return generated {@link Scheduler} object
+     */
+    Scheduler schedule(Consumer<Scheduler> consumer, int delay);
 
     /**
      * Velocity to set to the whole matrix.
