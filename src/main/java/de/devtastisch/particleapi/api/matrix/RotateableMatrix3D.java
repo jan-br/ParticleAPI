@@ -217,7 +217,6 @@ public class RotateableMatrix3D implements Matrix3D {
             vector.setX(rx);
             vector.setY(ry);
         }
-        System.out.println(vector);
         return vector;
     }
 
